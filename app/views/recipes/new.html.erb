@@ -1,0 +1,14 @@
+<%= form_with(model: @recipe) do |form| %>
+  <%= form.label :instructions, "Instructions:" %>
+  <%= form.text_area :instructions, size: "70x5" %>
+
+  <%= form.label :name, "Name:"%>
+  <%=form.text_field :name%>
+
+  <%= form.label :category, "Category:"%>
+  <%= form.select :category, ["Breakfast", "Lunch", "Dinner"] %>
+  <%# TODO valores de categorias válidas %>
+
+  <%# TODO lista de ingredientes %>
+  <%= form.submit "Save" %>
+<% end %>

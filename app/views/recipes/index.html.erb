@@ -1,0 +1,13 @@
+<h1>MY RECIPES</h1>
+
+<% if @recipes.present? %>
+  <ul>
+    <%= @recipes.each do |recipe| %>
+      <li><%= recipe.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Uh Oh... you don't have any recipes yet :( </p>
+<% end %>
+
+<%= link_to 'new recipe', new_recipe_path %>
