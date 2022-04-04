@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_30_114606) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_04_115744) do
+  create_table "recipe_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id", null: false
+    t.integer "recipe_categories_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "instructions"
+    t.index ["recipe_categories_id"], name: "index_recipes_on_recipe_categories_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email", default: "", null: false
@@ -24,4 +41,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_30_114606) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "recipes", "recipe_categories", column: "recipe_categories_id"
+  add_foreign_key "recipes", "users"
 end
