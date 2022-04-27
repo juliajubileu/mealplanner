@@ -1,0 +1,23 @@
+<%= form_with(model: @recipe) do |form| %>
+  <%= form.label :name, "Name:" %>
+  <%=form.text_field :name%>
+
+  <br>
+
+  <%= form.label :recipe_category, "Category:" %>
+  <%= form.select :recipe_category_id, RecipeCategory.all.collect {|cat| [cat.name, cat.id] } %>
+
+  <br>
+
+  <%= form.label :ingredients, "Ingredients:" %>
+  <%= form.select :ingredients_ids, Ingredient.all.collect { |ing| [ing.name, ing.id] }, {}, { :multiple => true } %>
+
+  <br>
+
+  <%= form.label :instructions, "Instructions:" %>
+  <%= form.text_area :instructions, size: "70x5" %>
+
+  <br>
+
+  <%= form.submit "Save" %>
+<% end %>

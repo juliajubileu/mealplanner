@@ -2,7 +2,7 @@
 
 class Recipe < ApplicationRecord
   belongs_to :user
-  belongs_to :recipe_categories
+  belongs_to :recipe_category
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
   has_many :measurement_units, through: :recipe_ingredients

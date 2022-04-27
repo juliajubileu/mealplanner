@@ -6,13 +6,15 @@ class RecipesController < ApplicationController
   end
 
   def new
-    recipe = Recipe.new
-    @ingredients = Ingredient.all
-    @categories = RecipeCategory.all
+    @recipe = Recipe.new
   end
 
   def create
+    p recipe_params
     recipe = Recipe.create(recipe_params)
+    redirect_to recipes_path
+
+    #TODO
   end
 
   private
@@ -20,6 +22,6 @@ class RecipesController < ApplicationController
   def recipe_params
     params
       .require(:recipe)
-      .permit(:name, :user, :category)
+      .permit(:name, :user, :recipe_category_id, :ingredients_ids, :instructions)
   end
 end
