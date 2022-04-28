@@ -7,4 +7,5 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_many :measurement_units, through: :recipe_ingredients
   has_many :measurement_amount, through: :recipe_ingredients
+  accepts_nested_attributes_for :recipe_ingredients
 end

@@ -9,8 +9,7 @@
 
   <br>
 
-  <%= form.label :ingredients, "Ingredients:" %>
-  <%= form.select :ingredients_ids, Ingredient.all.collect { |ing| [ing.name, ing.id] }, {}, { :multiple => true } %>
+  <%= render 'ingredients_list_form', form: form %>
 
   <br>
 

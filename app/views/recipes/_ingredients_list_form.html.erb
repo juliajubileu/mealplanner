@@ -1,1 +1,11 @@
-<%# TODO form de ingredientes %>
+<%= form.label :recipe_ingredients, "Ingredients List:" %>
+<%= form.fields_for :recipe_ingredients do |ingredients_form| %>
+  <%= ingredients_form.label :measurement_amount, "Amount:" %>
+  <%= ingredients_form.number_field :measurement_amount, in: 1.0..1000.0, step: 0.5 %>
+
+  <%= ingredients_form.label :measurement_unit, "Measurement Unit:" %>
+  <%= ingredients_form.select :measurement_unit_id, MeasurementUnit.all.collect { |unit| [unit.name, unit.id] } %>
+
+  <%= ingredients_form.label :ingredient, "Ingredient:" %>
+  <%= ingredients_form.select :ingredient_id, Ingredient.all.collect { |unit| [unit.name, unit.id] } %>
+<% end %>
